@@ -15,16 +15,17 @@ try{
         switch($url[0]){
             case "front" : 
                 switch($url[1]){
-                    case "clients" : echo "Info JSON clients";
+                    case "clients" : echo "Info JSON clients ";
                     break;
-                    case "singleClient" : echo "Info JSON singleClient";
+                    case "client" : echo "Info JSON singleClient :".$url[2];
                     break;
                     case "salles" : echo "Info JSON salles";
                     break;
-                    case "singleSalle" : echo "Info JSON singleSalle";
+                    case "salle" : echo "Info JSON singleSalle: ".$url[2];
                     break;
-                    case "clients" : echo "Info JSON clients";
+                    case "clientSalles" : echo "Info JSON clientSalles";
                     break;
+                    default : throw new Exception ("Page Not Found");
                 }
             break;
             case "admin" : echo "admin asked";
