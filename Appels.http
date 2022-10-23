@@ -1,0 +1,17 @@
+###
+GET http://localhost/serveur_ecf_studi/front/clients
+
+###
+GET http://localhost/serveur_ecf_studi/front/salles
+
+###
+GET http://localhost/serveur_ecf_studi/front/services
+
+###
+GET http://localhost/serveur_ecf_studi/front/zone
+
+###
+GET http://localhost/serveur_ecf_studi/front/branch
+
+###
+GET http://localhost/serveur_ecf_studi/front/contrat

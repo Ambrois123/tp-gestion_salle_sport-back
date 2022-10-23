@@ -7,12 +7,18 @@ define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" :
 //require
 require_once './controllers/clientController.php';
 require_once './controllers/salleController.php';
-require_once './controllers/clientSalleController.php';
+require_once './controllers/servicesController.php';
+require_once './controllers/zoneController.php';
+require_once './controllers/branchController.php';
+require_once './controllers/contratController.php';
 
 //instantiate
 $clientController = new ClientController();
 $salleController = new SalleController();
-$clientSalleController = new ClientSalleController();
+$servicesController = new ServicesController();
+$zoneController = new ZoneController();
+$branchController = new BranchController();
+$contratController = new ContratController();
 
 
 //system of route
@@ -37,7 +43,13 @@ try{
                         if(empty($url[2])) throw new Exception("ID Salle Not Found");
                         $salleController->getSingleSalle($url[2]);
                     break;
-                    case "clientSalles" : $clientSalleController->getClientSalle();
+                    case "services" : $servicesController->getServices();
+                    break;
+                    case "zone" : $zoneController->getZone();
+                    break;
+                    case "branch" : $branchController->getBranch();
+                    break;
+                    case "contrat" : $contratController->getContrat();
                     break;
                     default : throw new Exception ("Page Not Found");
                 }

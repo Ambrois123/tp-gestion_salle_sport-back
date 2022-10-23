@@ -3,7 +3,7 @@ require_once './models/clientModel.php';
 require_once './config/BaseController.php';
 
 
-class clientController 
+class clientController extends BaseController
 {
     private $clientModel;
 
@@ -15,9 +15,10 @@ class clientController
     public function getClient()
     {
         $clients = $this->clientModel->getDBClient();
-        echo "<pre>";
-        print_r($clients);
-        echo "</pre>";
+        $this->sendJSON($clients);
+        // echo "<pre>";
+        // print_r($clients);
+        // echo "</pre>";
         
     }
 

@@ -1,10 +1,24 @@
 <?php 
 
-class salleController 
+require_once './models/salleModel.php';
+require_once './config/BaseController.php';
+
+class salleController extends BaseController
 {
+    private $salleModel;
+
+    public function __construct()
+    {
+        $this->salleModel = new SalleModel();
+    }
+
     public function getSalle()
     {
-        echo "Info sur les Salles.";
+        $salle= $this->salleModel->getDBSalle();
+        $this->sendJSON($salle);
+        // echo "<pre>";
+        // print_r($salle);
+        // echo "</pre>";
     }
     public function getSingleSalle($id) 
     {

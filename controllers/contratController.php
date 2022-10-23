@@ -1,11 +1,22 @@
 <?php 
 
-class contratController 
+require_once './models/contratModel.php';
+require_once './config/BaseController.php';
+class contratController extends BaseController
 {
+    private $contratModel;
+
+    public function __construct()
+    {
+        $this->contratModel = new ContratModel();
+    }
+
     public function getContrat()
     {
-        echo "Info sur les Contrats.";
+        $contrat = $this->contratModel->getDBContrat();
+        $this->sendJSON($contrat);
     }
+
     public function getSingleContrat($id) 
     {
         echo "INfo single Contrat: ".$id;
