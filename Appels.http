@@ -1,17 +1,63 @@
+// table_client starts
 ###
 GET http://localhost/serveur_ecf_studi/front/clients
 
 ###
-GET http://localhost/serveur_ecf_studi/front/salles
+GET http://localhost/serveur_ecf_studi/front/client/1
+
+
+// table_client ends
+
+
+// table_salle starts
 
 ###
+GET http://localhost/serveur_ecf_studi/front/salles
+###
+GET http://localhost/serveur_ecf_studi/front/salle/4
+
+
+// table_salle ends
+
+*************************
+
+
+// table_services starts
+###
 GET http://localhost/serveur_ecf_studi/front/services
+
+###
+GET http://localhost/serveur_ecf_studi/front/service/2
+
+
+// table_services ends
+
+*************************
+
+// table_zone starts
 
 ###
 GET http://localhost/serveur_ecf_studi/front/zone
 
 ###
+GET http://localhost/serveur_ecf_studi/front/single_zone/2
+
+// table_zone ends
+
+*************************
+
+// table_branch starts
+
+###
 GET http://localhost/serveur_ecf_studi/front/branch
 
 ###
+GET http://localhost/serveur_ecf_studi/front/single_branch/7
+
+// table_branch ends
+
+###
 GET http://localhost/serveur_ecf_studi/front/contrat
+
+###
+GET http://localhost/serveur_ecf_studi/front/single_contrat/3

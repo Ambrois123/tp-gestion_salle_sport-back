@@ -17,8 +17,9 @@ class branchController extends BaseController
         $this->sendJSON($branch);
     }
 
-    public function getSingleBranch($id) 
+    public function getSingleBranch($idBranch) 
     {
-        echo "INfo single Branch: ".$id;
+        $singleBranch = $this->branchModel->getDBSingleBranch($idBranch);
+        $this->sendJSON($singleBranch);
     }
 }

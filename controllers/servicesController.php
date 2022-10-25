@@ -16,8 +16,9 @@ class ServicesController extends BaseController
         $services=$this->servicesModel->getDBServices();
         $this->sendJSON($services);
     }
-    public function getSingleServices($id) 
+    public function getSingleServices($idService) 
     {
-        echo "INfo single Services: ".$id;
+        $dataSingleService = $this->servicesModel->getDBSingleService($idService);
+        $this->sendJSON($dataSingleService);
     }
 }

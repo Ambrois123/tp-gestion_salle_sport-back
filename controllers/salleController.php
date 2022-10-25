@@ -20,8 +20,9 @@ class salleController extends BaseController
         // print_r($salle);
         // echo "</pre>";
     }
-    public function getSingleSalle($id) 
+    public function getSingleSalle($idSalle) 
     {
-        echo "Info single Salle: ".$id;
+        $singleSalle = $this->salleModel->getDBSingleSalle($idSalle);
+        $this->sendJSON($singleSalle);
     }
 }

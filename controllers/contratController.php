@@ -17,8 +17,9 @@ class contratController extends BaseController
         $this->sendJSON($contrat);
     }
 
-    public function getSingleContrat($id) 
+    public function getSingleContrat($idContrat) 
     {
-        echo "INfo single Contrat: ".$id;
+        $singleContrat = $this->contratModel->getDBSingleContrat($idContrat);
+        $this->sendJSON($singleContrat);
     }
 }

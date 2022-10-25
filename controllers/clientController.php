@@ -22,8 +22,9 @@ class clientController extends BaseController
         
     }
 
-    public function getSingleClient($id) 
+    public function getSingleClient($idClient) 
     {
-        echo "Info single Client: ".$id;
+        $singleClient = $this->clientModel->getDBSingleClient($idClient);
+        $this->sendJson($singleClient);
     }
 }

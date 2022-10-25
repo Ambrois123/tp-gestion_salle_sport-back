@@ -15,8 +15,9 @@ class zoneController extends BaseController
         $zone = $this-> zoneModel->getDBZone();
         $this->sendJSON($zone);
     }
-    public function getSingleZone($id) 
+    public function getSingleZone($idZone) 
     {
-        echo "INfo single Zone: ".$id;
+        $singleZone = $this->zoneModel->getDBSingleZone($idZone);
+        $this->sendJSON($singleZone);
     }
 }

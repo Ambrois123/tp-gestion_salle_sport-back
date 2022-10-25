@@ -12,4 +12,18 @@ class ContratModel extends Database
         $dataContrat = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $dataContrat;
     }
+
+    public function getDBSingleContrat($idContrat)
+    {
+        $req = "SELECT * FROM table_contrat
+        WHERE contrat_id = :idContrat
+        ";
+
+        $stmt = $this->getConnection()->prepare($req);
+        $stmt->bindValue(":idContrat", $idContrat, PDO::PARAM_INT);
+        $stmt->execute();
+        $dataSingleContrat = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $dataSingleContrat;
+    }
 }

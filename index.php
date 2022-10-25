@@ -11,6 +11,7 @@ require_once './controllers/servicesController.php';
 require_once './controllers/zoneController.php';
 require_once './controllers/branchController.php';
 require_once './controllers/contratController.php';
+require_once './controllers/generalInfoController.php';
 
 //instantiate
 $clientController = new ClientController();
@@ -19,6 +20,7 @@ $servicesController = new ServicesController();
 $zoneController = new ZoneController();
 $branchController = new BranchController();
 $contratController = new ContratController();
+$generalInfoController = new GeneralInfoController();
 
 
 //system of route
@@ -45,11 +47,29 @@ try{
                     break;
                     case "services" : $servicesController->getServices();
                     break;
+                    case "service" :
+                        if(empty($url[2])) throw new Exception("ID Service Not Found");
+                        $servicesController->getSingleServices($url[2]);
+                    break;
                     case "zone" : $zoneController->getZone();
+                    break;
+                    case "single_zone" :
+                        if(empty($url[2])) throw new Exception("ID Zone Not Found");
+                        $zoneController->getSingleZone($url[2]);
                     break;
                     case "branch" : $branchController->getBranch();
                     break;
+                    case "single_branch" : 
+                        if(empty($url[2])) throw new Exception("ID Branch Not Found");
+                        $branchController->getSingleBranch($url[2]);
+                    break;
                     case "contrat" : $contratController->getContrat();
+                    break;
+                    case "single_contrat" : 
+                        if(empty($url[2])) throw new Exception("ID Contrat Not Found");
+                        $contratController->getSingleContrat($url[2]);
+                    break;
+                    case "generalInfo" : $generalInfoController->getGeneralInfo();
                     break;
                     default : throw new Exception ("Page Not Found");
                 }
