@@ -56,8 +56,15 @@ GET http://localhost/serveur_ecf_studi/front/single_branch/7
 
 // table_branch ends
 
+
+ *********************
+
+ // table_contrat starts
 ###
 GET http://localhost/serveur_ecf_studi/front/contrat
 
 ###
 GET http://localhost/serveur_ecf_studi/front/single_contrat/3
+
+// table_contrat ends
+

@@ -7,8 +7,10 @@ class ServicesModel extends Database
     public function getDBServices()
     {
         $req= "SELECT * FROM table_services
-        INNER JOIN table_contrat
-        ON table_services.contratId =table_contrat.contrat_id
+                INNER JOIN table_contrat ON table_services.contratId =table_contrat.contrat_id
+                INNER JOIN table_salle ON table_services.salleId = table_salle.salle_id
+                INNER JOIN table_client ON table_services.clientId = table_client.client_id
+        
         ";
 
         $stmt = $this->getConnection()->prepare($req);
@@ -17,6 +19,9 @@ class ServicesModel extends Database
 
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
+            //boolean display false or true not 1 or 0
+            $row['salle_active'] = (bool)$row['salle_active'];
+            $row["client_active"] = (bool)$row["client_active"];
             $row["gestion_membres"] = (bool)$row["gestion_membres"];
             $row["gestion_abonnement"] = (bool)$row["gestion_abonnement"];
             $row["gestion_collabo"] = (bool)$row["gestion_collabo"];

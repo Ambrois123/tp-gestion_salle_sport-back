@@ -11,7 +11,7 @@ require_once './controllers/servicesController.php';
 require_once './controllers/zoneController.php';
 require_once './controllers/branchController.php';
 require_once './controllers/contratController.php';
-require_once './controllers/generalInfoController.php';
+
 
 //instantiate
 $clientController = new ClientController();
@@ -20,7 +20,6 @@ $servicesController = new ServicesController();
 $zoneController = new ZoneController();
 $branchController = new BranchController();
 $contratController = new ContratController();
-$generalInfoController = new GeneralInfoController();
 
 
 //system of route
@@ -68,8 +67,6 @@ try{
                     case "single_contrat" : 
                         if(empty($url[2])) throw new Exception("ID Contrat Not Found");
                         $contratController->getSingleContrat($url[2]);
-                    break;
-                    case "generalInfo" : $generalInfoController->getGeneralInfo();
                     break;
                     default : throw new Exception ("Page Not Found");
                 }
