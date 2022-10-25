@@ -105,8 +105,15 @@ try {
                                 throw new Exception("Page Not Found");
                         } 
                         break;
-                    default:
-                        throw new Exception("Page Not Found");
+                    case "salles" : 
+                        switch($url[2]){
+                            case "visualisation" : echo "visualisation salles";
+                                break;
+                            case "creation" : echo "création d'une salle";
+                                break;
+                            default:
+                                throw new Exception("Page Not Found");
+                        }
                 }
                 break;
             default:

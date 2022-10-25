@@ -37,8 +37,8 @@
             Salle
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Visualisation</a></li>
-            <li><a class="dropdown-item" href="#">Création</a></li>
+            <li><a class="dropdown-item" href="<?= URL ?>admin/salles/visualisation">Visualisation</a></li>
+            <li><a class="dropdown-item" href="<?= URL ?>admin/salles/creation">Création</a></li>
           </ul>
         </li>
         <li class="nav-item">
