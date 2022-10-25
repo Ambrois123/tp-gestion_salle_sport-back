@@ -95,6 +95,16 @@ try {
                         break;
                     case "deconnexion": $adminController->deconnexion() ;
                         break;
+                    case "clients" : 
+                        switch($url[2]){
+                            case "visualisation" : $clientController->display();
+                                break;
+                            case "creation" : echo "creation d'un client";
+                                break;
+                            default:
+                                throw new Exception("Page Not Found");
+                        } 
+                        break;
                     default:
                         throw new Exception("Page Not Found");
                 }
