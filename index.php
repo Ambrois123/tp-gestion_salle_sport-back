@@ -103,7 +103,9 @@ try {
                                 break;
                             case "updateValidate" : $clientController->update();
                                 break;
-                            case "creation" : echo "creation d'un client";
+                            case "creation" : $clientController->createTemplate();
+                                break;
+                            case "validateCreate" : $clientController->create();
                                 break;
                             default:
                                 throw new Exception("Page Not Found");

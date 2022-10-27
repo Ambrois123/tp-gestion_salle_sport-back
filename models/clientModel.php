@@ -97,5 +97,32 @@ class ClientModel extends Database
         $stmt->execute();
         
     }
+
+    public function createClient($name, $email,$phone,$address,$is_active,$description,$presentation,$url,$logo,$dpo,$tech,$com) 
+    {
+        $req = "INSERT INTO table_client (client_name,  client_email, client_tel, client_address, client_active, client_description, client_presentation, client_url, client_logo, client_dpo, client_tech, client_com)
+        VALUES (:name,:email,:phone,:address,:is_active,:description,:presentation,:url,:logo,:dpo,:tech,:com)
+        ";
+
+        $stmt = $this->getConnection()->prepare($req);
+
+        $stmt->bindValue(":name",$name,PDO::PARAM_STR);
+        $stmt->bindValue(":email",$email,PDO::PARAM_STR);
+        $stmt->bindValue(":phone",$phone,PDO::PARAM_STR);
+        $stmt->bindValue(":address",$address,PDO::PARAM_STR);
+        $stmt->bindValue(":is_active",$is_active,PDO::PARAM_BOOL);
+        $stmt->bindValue(":description",$description,PDO::PARAM_STR);
+        $stmt->bindValue(":presentation",$presentation,PDO::PARAM_STR);
+        $stmt->bindValue(":url",$url,PDO::PARAM_STR);
+        $stmt->bindValue(":logo",$logo,PDO::PARAM_STR);
+        $stmt->bindValue(":dpo",$dpo,PDO::PARAM_STR);
+        $stmt->bindValue(":tech",$tech,PDO::PARAM_STR);
+        $stmt->bindValue(":com",$com,PDO::PARAM_STR);
+
+        $stmt->execute();
+
+        return $this->getConnection()->lastInsertId();
+
+    }
    
 }
