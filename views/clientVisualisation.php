@@ -21,24 +21,62 @@
   </thead>
   <tbody>
     <!--loops to browse-->
-    <?php foreach($clients as $client) : ?>
-    <tr>
-      <td><?= $client['client_id'] ?></td>
-      <td><?= $client['client_name'] ?></td>
-      <td><?= $client['client_email'] ?></td>
-      <td><?= $client['client_tel'] ?></td>
-      <td><?= $client['client_address'] ?></td>
-      <td><?= $client['client_active'] ?></td>
-      <td><?= $client['client_description'] ?></td>
-      <td><?= $client['client_presentation'] ?></td>
-      <td><?= $client['client_url'] ?></td>
-      <td><?= $client['client_logo'] ?></td>
-      <td><?= $client['client_dpo'] ?></td>
-      <td><?= $client['client_tech'] ?></td>
-      <td><?= $client['client_com'] ?></td>
-      <td><button class='btn btn-warning'>Modifier</button></td>
-      <td><button class='btn btn-danger'>Supprimer</button></td>
-    </tr>
+    <?php foreach ($clients as $client) : ?>
+      <!--verify if client try to update is the good one. if it is good line will be change into a form contact-->
+      <?php if (empty($_POST['client_id']) || $_POST['client_id'] !== $client['client_id']) : ?>
+        <tr>
+          <td><?= $client['client_id'] ?></td>
+          <td><?= $client['client_name'] ?></td>
+          <td><?= $client['client_email'] ?></td>
+          <td><?= $client['client_tel'] ?></td>
+          <td><?= $client['client_address'] ?></td>
+          <td><?= $client['client_active'] ?></td>
+          <td><?= $client['client_description'] ?></td>
+          <td><?= $client['client_presentation'] ?></td>
+          <td><?= $client['client_url'] ?></td>
+          <td><?= $client['client_logo'] ?></td>
+          <td><?= $client['client_dpo'] ?></td>
+          <td><?= $client['client_tech'] ?></td>
+          <td><?= $client['client_com'] ?></td>
+          <td>
+            <!--form modification-->
+            <!--action empty cause call the same page-->
+            <form method="POST" action="">
+              <input type="hidden" name="client_id" value="<?= $client['client_id'] ?>">
+              <button class='btn btn-warning' type="submit">Modifier</button>
+
+            </form>
+          </td>
+          <td>
+            <form method="POST" action="<?= URL ?>admin/clients/validateDelete" onsubmit="return confirm('Voulez-vous vraiment supprimer ce client ?')">
+              <input type="hidden" name="client_id" value="<?= $client['client_id'] ?>">
+              <button class='btn btn-danger' type="submit">Supprimer</button>
+            </form>
+          </td>
+        </tr>
+        <?php else : ?>
+          <form method="POST" action="<?= URL ?>/admin/clients/updateValidate">
+                <tr>
+                  <td><?= $client['client_id'] ?></td>
+                  <td><input type="text" name="client_name" value="<?= $client['client_name'] ?>"></td>
+                  <td><input type="text" name="client_email" value="<?= $client['client_email'] ?>"></td>
+                  <td><input type="text" name="client_tel" value="<?= $client['client_tel'] ?>"></td>
+                  <td><input type="text" name="client_address" value="<?= $client['client_address'] ?>"></td>
+                  <td><input type="checkbox" name="client_active" value="<?= $client['client_active'] ?>"></td>
+                  <td><textarea name="client_description" rows="5"><?= $client['client_description'] ?></textarea></td>
+                  <td><textarea name="client_presentation" rows="5"><?= $client['client_presentation'] ?></textarea></td>
+                  <td><input type="text" name="client_url" value="<?= $client['client_url'] ?>"></td>
+                  <td><input type="text" name="client_logo" value="<?= $client['client_logo'] ?>"></td>
+                  <td><input type="text" name="client_dpo" value="<?= $client['client_dpo'] ?>"></td>
+                  <td><input type="text" name="client_tech" value="<?= $client['client_tech'] ?>"></td>
+                  <td><input type="text" name="client_com" value="<?= $client['client_com'] ?>"></td>
+                  <td colspan="2">
+                  <input type="hidden" name="client_id" value="<?= $client['client_id'] ?>">
+                  <button class='btn btn-primary' type="submit">Valider</button>
+                  </td>
+                </tr>
+        </form>
+      <?php endif; ?>
     <?php endforeach; ?>
   </tbody>
 </table>

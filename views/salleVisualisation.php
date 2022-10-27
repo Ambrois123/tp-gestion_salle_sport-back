@@ -14,7 +14,7 @@
     <!--loops to browse-->
     <?php foreach($salles as $salle) : ?>
     <tr>
-      <td><?= $salle['calle_id'] ?></td>
+      <td><?= $salle['salle_id'] ?></td>
       <td><?= $salle['salle_name'] ?></td>
       <td><?= $salle['salle_address'] ?></td>
       <td><?= $salle['salle_active'] ?></td>

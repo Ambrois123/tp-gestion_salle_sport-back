@@ -13,7 +13,20 @@
     <!--insert menu ob admin page-->
     <?php require_once ("./views/menu.php") ?>
     <div class="container">
+        
         <h1 class="text-center border-dark bg-light m-2 p-2"><?= $title ?></h1>
+
+        <!--gestion session error # color & message from clientController-->
+        <?php if(!empty($_SESSION['alert'])) : ?>
+            <div class="alert <?= $_SESSION['alert']['type'] ?> text-center" role="alert">
+                    <?= $_SESSION['alert']['message'] ?>
+            </div>
+        <?php 
+        // <!--delete alert message-->
+
+            unset($_SESSION['alert']);
+        
+        endif; ?>
         <?= $content ?>
     </div>
     <!--insert $content-->

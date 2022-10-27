@@ -99,6 +99,10 @@ try {
                         switch($url[2]){
                             case "visualisation" : $clientController->display();
                                 break;
+                            case "validateDelete" : $clientController->delete();
+                                break;
+                            case "updateValidate" : $clientController->update();
+                                break;
                             case "creation" : echo "creation d'un client";
                                 break;
                             default:
