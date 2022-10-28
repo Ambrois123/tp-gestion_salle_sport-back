@@ -37,4 +37,26 @@ class salleController extends BaseController
             throw new Exception("Vous n'avez pas accès à cette page");
         }
     }
+
+    public function delete() 
+    {
+        if (Security::verifyAccessSession()){
+           
+            //verify if client is connect to other tables 
+
+            $idSalle= (int)Security::secureHTML($_POST['salle_id']);
+
+            $this->salleModel->deleteDBSalle($idSalle);
+
+                $_SESSION['alert'] = [
+                    'message' => "La salle a bien été supprimée.",
+                    'type' => "alert-success"
+                ];
+            
+            header("Location: ".URL.'admin/salles/visualisation');
+
+        } else {
+            throw new Exception("Vous n'avez pas accès à cette page");
+        }
+    }
 }

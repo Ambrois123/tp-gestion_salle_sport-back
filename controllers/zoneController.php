@@ -32,4 +32,25 @@ class zoneController extends BaseController
             throw new Exception("Vous n'avez pas accès à cette page");
         }
     }
+
+    public function delete() 
+    {
+        if (Security::verifyAccessSession()){
+           
+            //verify if client is connect to other tables 
+
+            $idZone= (int)Security::secureHTML($_POST['zone_id']);
+
+            $this->zoneModel->deleteDBZone($idZone);
+                $_SESSION['alert'] = [
+                    'message' => "La zone a bien été supprimée.",
+                    'type' => "alert-success"
+                ];
+            
+            header("Location: ".URL.'admin/zone/visualisation');
+
+        } else {
+            throw new Exception("Vous n'avez pas accès à cette page");
+        }
+    }
 }

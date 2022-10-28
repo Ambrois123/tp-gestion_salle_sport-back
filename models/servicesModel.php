@@ -80,4 +80,15 @@ class ServicesModel extends Database
         $dataService = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $dataService;
     }
+
+    public function deleteDBService($idService) 
+    {
+        $req= "DELETE FROM table_services
+                WHERE service_id = :idService
+            ";
+        
+        $stmt = $this->getConnection()->prepare($req);
+        $stmt->bindValue(":idService", $idService, PDO::PARAM_INT);
+        $stmt->execute();
+    }
 }

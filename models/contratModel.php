@@ -35,4 +35,15 @@ class ContratModel extends Database
         $dataContrat = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $dataContrat;
     }
+
+    public function deleteDBContrat($idContrat) 
+    {
+        $req= "DELETE FROM table_contrat
+        WHERE contrat_id = :idContrat
+        ";
+
+        $stmt = $this->getConnection()->prepare($req);
+        $stmt->bindValue(":idContrat", $idContrat, PDO::PARAM_INT);
+        $stmt->execute();
+    }
 }

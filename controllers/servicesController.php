@@ -34,4 +34,26 @@ class ServicesController extends BaseController
             throw new Exception("Vous n'avez pas accès à cette page");
         }
     }
+
+    public function delete() 
+    {
+        if (Security::verifyAccessSession()){
+           
+            //verify if client is connect to other tables 
+
+            $idService= (int)Security::secureHTML($_POST['service_id']);
+
+            $this->servicesModel->deleteDBService($idService);
+
+                $_SESSION['alert'] = [
+                    'message' => "Le service a bien été supprimée.",
+                    'type' => "alert-success"
+                ];
+            
+            header("Location: ".URL.'admin/services/visualisation');
+
+        } else {
+            throw new Exception("Vous n'avez pas accès à cette page");
+        }
+    }
 }

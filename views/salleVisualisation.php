@@ -25,7 +25,7 @@
         </form>
       </td>
       <td>
-      <form method="POST" action="<?= URL ?>admin/services/validateDelete" onsubmit="return confirm('Voulez-vous vraiment supprimer cette salle ?')">
+      <form method="POST" action="<?= URL ?>admin/salles/validateDelete" onsubmit="return confirm('Voulez-vous vraiment supprimer cette salle ?')">
               <input type="hidden" name="salle_id" value="<?= $salle['salle_id'] ?>">
               <button class='btn btn-danger' type="submit">Supprimer</button>
             </form>

@@ -38,4 +38,15 @@ class BranchModel extends Database
         $dataBranch = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $dataBranch;
     }
+
+    public function deleteDBBranch($idBranch) 
+    {
+        $req= "DELETE FROM table_branch
+        WHERE branch_id = :idBranch
+        ";
+
+        $stmt = $this->getConnection()->prepare($req);
+        $stmt->bindValue(":idBranch", $idBranch, PDO::PARAM_INT);
+        $stmt->execute();
+    }
 }

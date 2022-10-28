@@ -115,8 +115,8 @@ try {
                             switch($url[2]){
                                 case "visualisation" : $salleController->displaySalles();
                                     break;
-                                // case "validateDelete" : $clientController->delete();
-                                //     break;
+                                case "validateDelete" : $salleController->delete();
+                                    break;
                                 // case "updateValidate" : $clientController->update();
                                 //     break;
                                 // case "creation" : $clientController->createTemplate();
@@ -131,8 +131,8 @@ try {
                                 switch($url[2]){
                                     case "visualisation" : $servicesController->displayServices();
                                         break;
-                                    // case "validateDelete" : $clientController->delete();
-                                    //     break;
+                                    case "validateDelete" : $servicesController->delete();
+                                        break;
                                     // case "updateValidate" : $clientController->update();
                                     //     break;
                                     // case "creation" : $clientController->createTemplate();
@@ -147,8 +147,8 @@ try {
                                     switch($url[2]){
                                         case "visualisation" : $contratController->displayContrat();
                                             break;
-                                        // case "validateDelete" : $clientController->delete();
-                                        //     break;
+                                        case "validateDelete" : $contratController->delete();
+                                            break;
                                         // case "updateValidate" : $clientController->update();
                                         //     break;
                                         // case "creation" : $clientController->createTemplate();
@@ -163,8 +163,8 @@ try {
                                         switch($url[2]){
                                             case "visualisation" : $branchController->displayBranch();
                                                 break;
-                                            // case "validateDelete" : $clientController->delete();
-                                            //     break;
+                                            case "validateDelete" : $branchController->delete();
+                                                break;
                                             // case "updateValidate" : $clientController->update();
                                             //     break;
                                             // case "creation" : $clientController->createTemplate();
@@ -179,8 +179,8 @@ try {
                                             switch($url[2]){
                                                 case "visualisation" : $zoneController->displayZone();
                                                     break;
-                                                // case "validateDelete" : $clientController->delete();
-                                                //     break;
+                                                case "validateDelete" : $zoneController->delete();
+                                                    break;
                                                 // case "updateValidate" : $clientController->update();
                                                 //     break;
                                                 // case "creation" : $clientController->createTemplate();

@@ -34,4 +34,25 @@ class branchController extends BaseController
             throw new Exception("Vous n'avez pas accès à cette page");
         }
     }
+
+    public function delete() 
+    {
+        if (Security::verifyAccessSession()){
+           
+            //verify if client is connect to other tables 
+
+            $idBranch= (int)Security::secureHTML($_POST['branch_id']);
+
+            $this->branchModel->deleteDBBranch($idBranch);
+                $_SESSION['alert'] = [
+                    'message' => "La branche a bien été supprimée.",
+                    'type' => "alert-success"
+                ];
+            
+            header("Location: ".URL.'admin/branche/visualisation');
+
+        } else {
+            throw new Exception("Vous n'avez pas accès à cette page");
+        }
+    }
 }

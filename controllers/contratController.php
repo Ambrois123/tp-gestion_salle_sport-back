@@ -34,4 +34,25 @@ class contratController extends BaseController
             throw new Exception("Vous n'avez pas accès à cette page");
         }
     }
+
+    public function delete() 
+    {
+        if (Security::verifyAccessSession()){
+           
+            //verify if client is connect to other tables 
+
+            $idContrat= (int)Security::secureHTML($_POST['contrat_id']);
+
+            $this->contratModel->deleteDBContrat($idContrat);
+                $_SESSION['alert'] = [
+                    'message' => "Le service a bien été supprimée.",
+                    'type' => "alert-success"
+                ];
+            
+            header("Location: ".URL.'admin/contrat/visualisation');
+
+        } else {
+            throw new Exception("Vous n'avez pas accès à cette page");
+        }
+    }
 }

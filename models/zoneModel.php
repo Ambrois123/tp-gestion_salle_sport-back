@@ -38,4 +38,15 @@ class ZoneModel extends Database
         $dataZone = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $dataZone;
     }
+
+    public function deleteDBZone($idZone) 
+    {
+        $req= "DELETE FROM table_zone
+        WHERE zone_id = :idZone
+        ";
+
+        $stmt = $this->getConnection()->prepare($req);
+        $stmt->bindValue(":idZone", $idZone, PDO::PARAM_INT);
+        $stmt->execute();
+    }
 }

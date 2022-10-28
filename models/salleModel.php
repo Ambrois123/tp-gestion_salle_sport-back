@@ -82,5 +82,16 @@ class SalleModel extends Database
         return $dataSalle;
     }
 
+    public function deleteDBSalle($idSalle) 
+    {
+        $req= "DELETE FROM table_salle
+                WHERE salle_id = :idSalle
+            ";
+        
+        $stmt = $this->getConnection()->prepare($req);
+        $stmt->bindValue(":idSalle", $idSalle, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
     
 }
