@@ -71,4 +71,13 @@ class ServicesModel extends Database
         }
         return $dataSingleService;
     }
+
+    public function getDBDisplayServices() 
+    {
+        $req = "SELECT * FROM table_services";
+        $stmt= $this->getConnection()->prepare($req);
+        $stmt->execute();
+        $dataService = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $dataService;
+    }
 }

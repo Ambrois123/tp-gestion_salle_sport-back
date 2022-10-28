@@ -66,7 +66,7 @@
                   <td><textarea name="client_description" rows="5"><?= $client['client_description'] ?></textarea></td>
                   <td><textarea name="client_presentation" rows="5"><?= $client['client_presentation'] ?></textarea></td>
                   <td><input type="text" name="client_url" value="<?= $client['client_url'] ?>"></td>
-                  <td><input type="text" name="client_logo" value="<?= $client['client_logo'] ?>"></td>
+                  <td><input type="file" name="client_logo" value="<?= $client['client_logo'] ?>"></td>
                   <td><input type="text" name="client_dpo" value="<?= $client['client_dpo'] ?>"></td>
                   <td><input type="text" name="client_tech" value="<?= $client['client_tech'] ?>"></td>
                   <td><input type="text" name="client_com" value="<?= $client['client_com'] ?>"></td>

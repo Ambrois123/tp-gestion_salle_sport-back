@@ -25,4 +25,16 @@ class salleController extends BaseController
         $singleSalle = $this->salleModel->getDBSingleSalle($idSalle);
         $this->sendJSON($singleSalle);
     }
+
+    public function displaySalles() 
+    {
+        if (Security::verifyAccessSession()){
+
+            $salles= $this->salleModel->getDBDisplaySalle();
+            require_once './views/salleVisualisation.php';
+
+        } else {
+            throw new Exception("Vous n'avez pas accès à cette page");
+        }
+    }
 }

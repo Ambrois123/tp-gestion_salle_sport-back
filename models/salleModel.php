@@ -60,4 +60,27 @@ class SalleModel extends Database
             }
         return $dataSingleSalle;
     }
+
+    public function getDBDisplaySalle() 
+    {
+        $req = "SELECT * FROM table_salle
+        ";
+
+        $stmt = $this->getConnection()->prepare($req);
+        $stmt->execute();
+        $dataSalle = [];
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+
+            //boolean display false or true not 1 or 0
+
+            $row["salle_active"] = (bool)$row["salle_active"];
+
+            $dataSalle[] = $row;
+
+        }
+        return $dataSalle;
+    }
+
+    
 }

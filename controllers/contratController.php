@@ -22,4 +22,16 @@ class contratController extends BaseController
         $singleContrat = $this->contratModel->getDBSingleContrat($idContrat);
         $this->sendJSON($singleContrat);
     }
+
+    public function displayContrat() 
+    {
+        if (Security::verifyAccessSession()){
+
+            $contrats= $this->contratModel->getDBDisplayContrat();
+            require_once './views/contratVisualisation.php';
+
+        } else {
+            throw new Exception("Vous n'avez pas accès à cette page");
+        }
+    }
 }

@@ -20,4 +20,16 @@ class zoneController extends BaseController
         $singleZone = $this->zoneModel->getDBSingleZone($idZone);
         $this->sendJSON($singleZone);
     }
+
+    public function displayZone() 
+    {
+        if (Security::verifyAccessSession()){
+
+            $zones= $this->zoneModel->getDBDisplayZOne();
+            require_once './views/zoneVisualisation.php';
+
+        } else {
+            throw new Exception("Vous n'avez pas accès à cette page");
+        }
+    }
 }

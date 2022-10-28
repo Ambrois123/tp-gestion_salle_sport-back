@@ -41,6 +41,42 @@
             <li><a class="dropdown-item" href="<?= URL ?>admin/salles/creation">Création</a></li>
           </ul>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Services
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="<?= URL ?>admin/services/visualisation">Visualisation</a></li>
+            <li><a class="dropdown-item" href="<?= URL ?>admin/services/creation">Création</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            contrat
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="<?= URL ?>admin/contrat/visualisation">Visualisation</a></li>
+            <li><a class="dropdown-item" href="<?= URL ?>admin/contrat/creation">Création</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Branche
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="<?= URL ?>admin/branche/visualisation">Visualisation</a></li>
+            <li><a class="dropdown-item" href="<?= URL ?>admin/branche/creation">Création</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Zone
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="<?= URL ?>admin/zone/visualisation">Visualisation</a></li>
+            <li><a class="dropdown-item" href="<?= URL ?>admin/zone/creation">Création</a></li>
+          </ul>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="<?= URL ?>admin/deconnexion">Deconnexion</a>
         </li>

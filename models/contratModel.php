@@ -26,4 +26,13 @@ class ContratModel extends Database
 
         return $dataSingleContrat;
     }
+
+    public function getDBDisplayContrat() 
+    {
+        $req = "SELECT * FROM table_contrat";
+        $stmt= $this->getConnection()->prepare($req);
+        $stmt->execute();
+        $dataContrat = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $dataContrat;
+    }
 }

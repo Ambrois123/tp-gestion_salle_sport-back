@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<form method="POST" action="<?= URL ?>admin/clients/validateCreate" class="container pb-3">
+<form method="POST" action="<?= URL ?>admin/clients/validateCreate" class="container pb-3" enctype="multipart/form-data">
   <div class="mb-3">
     <label for="client_name" class="form-label">Nom</label>
     <input type="text" class="form-control" id="client_name" name="client_name">
@@ -35,7 +35,7 @@
   </div>
   <div class="mb-3">
   <label for="client_logo" class="form-label">Logo</label>
-  <input class="form-control" type="file" id="client_logo" multiple>
+  <input class="form-control" type="file" id="client_logo" accept=".jpg, .jpeg, .png" name="client_logo">
 </div>
   <div class="mb-3">
     <label for="client_dpo" class="form-label">Dpo</label>

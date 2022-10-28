@@ -28,4 +28,14 @@ class ZoneModel extends Database
 
         return $dataSingleZone;
     }
+
+    public function getDBDisplayZOne() 
+    {
+        $req = "SELECT * FROM table_zone";
+
+        $stmt = $this->getConnection()->prepare($req);
+        $stmt->execute();
+        $dataZone = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $dataZone;
+    }
 }

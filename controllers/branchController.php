@@ -22,4 +22,16 @@ class branchController extends BaseController
         $singleBranch = $this->branchModel->getDBSingleBranch($idBranch);
         $this->sendJSON($singleBranch);
     }
+
+    public function displayBranch() 
+    {
+        if (Security::verifyAccessSession()){
+
+            $branches= $this->branchModel->getDBDisplayBranch();
+            require_once './views/branchVisualisation.php';
+
+        } else {
+            throw new Exception("Vous n'avez pas accès à cette page");
+        }
+    }
 }
