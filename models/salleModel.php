@@ -9,8 +9,8 @@ class SalleModel extends Database
         $req = "SELECT *
                 FROM table_salle
                 INNER JOIN table_client ON table_client.client_id = table_salle.clientId
-                INNER JOIN table_branch ON table_branch.salleId = table_salle.salle_id
-                INNER JOIN table_zone ON table_zone.salleId = table_salle.salle_id
+                -- INNER JOIN table_branch ON table_branch.salleId = table_salle.salle_id
+                -- INNER JOIN table_zone ON table_zone.salleId = table_salle.salle_id
                 INNER JOIN table_services ON table_services.salleId = table_salle.salle_id
 
                 ";

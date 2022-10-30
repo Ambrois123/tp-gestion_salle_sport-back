@@ -23,9 +23,7 @@ try{
             )') !== false) {
                 if($gestion_sport->exec('CREATE TABLE table_contrat(
                     contrat_id INT PRIMARY KEY AUTO_INCREMENT,
-                    formule_esssentiel BOOLEAN NOT NULL DEFAULT FALSE,
-                    formule_premium BOOLEAN NOT NULL DEFAULT FALSE,
-                    formule_business BOOLEAN NOT NULL DEFAULT FALSE
+                    contrat_name VARCHAR(250) NOT NULL
 
                 )') !== false) {
                     if ($gestion_sport->exec('CREATE TABLE table_services(
@@ -41,9 +39,7 @@ try{
                         acces_qrcode BOOLEAN NOT NULL DEFAULT FALSE,
                         video_surv BOOLEAN NOT NULL DEFAULT FALSE,
                         vente_boisson BOOLEAN NOT NULL DEFAULT FALSE,
-                        org_evenement BOOLEAN NOT NULL DEFAULT FALSE,
-                        contratId INT NOT NULL,
-                        FOREIGN KEY (contratId) REFERENCES table_contrat(contrat_id)
+                        org_evenement BOOLEAN NOT NULL DEFAULT FALSE
                     )') !== false) {
                         if ($gestion_sport->exec('CREATE TABLE table_branch(
                             branch_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -51,9 +47,7 @@ try{
                         )') !== false) {
                             if ($gestion_sport->exec('CREATE TABLE table_zone(
                                 zone_id INT PRIMARY KEY AUTO_INCREMENT,
-                                zone_name VARCHAR(200) NOT NULL,
-                                branchId INT NOT NULL,
-                                FOREIGN KEY (branchId) REFERENCES table_branch(branch_id)
+                                zone_name VARCHAR(200) NOT NULL
                             )') !== false) {
                                 if ($gestion_sport->exec('CREATE TABLE table_salle(
                                     salle_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -63,10 +57,13 @@ try{
                                     clientId INT NOT NULL,
                                     serviceId INT nOT NULL,
                                     zoneId INT NOT NULL,
+                                    branchId INT NOT NULL,
+                                    contratId INT NOT NULL,
                                     FOREIGN KEY (clientId) REFERENCES table_client(client_id),
                                     FOREIGN KEY (serviceId) REFERENCES table_services(service_id),
-                                    FOREIGN KEY (zoneId) REFERENCES table_zone(zone_id)
-                                   
+                                    FOREIGN KEY (zoneId) REFERENCES table_zone(zone_id),
+                                    FOREIGN KEY (branchId) REFERENCES table_branch(branch_id),
+                                    FOREIGN KEY (contratId) REFERENCES table_contrat(contrat_id)
                                 )') !== false) {
                                     if ($gestion_sport->exec('CREATE TABLE administrator(
                                         login VARCHAR(100) NOT NuLL,
