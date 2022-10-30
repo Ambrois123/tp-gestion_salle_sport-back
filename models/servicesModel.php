@@ -7,10 +7,6 @@ class ServicesModel extends Database
     public function getDBServices()
     {
         $req= "SELECT * FROM table_services
-                INNER JOIN table_contrat ON table_services.contratId =table_contrat.contrat_id
-                INNER JOIN table_salle ON table_services.salleId = table_salle.salle_id
-                INNER JOIN table_client ON table_services.clientId = table_client.client_id
-        
         ";
 
         $stmt = $this->getConnection()->prepare($req);
@@ -20,8 +16,6 @@ class ServicesModel extends Database
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
             //boolean display false or true not 1 or 0
-            $row['salle_active'] = (bool)$row['salle_active'];
-            $row["client_active"] = (bool)$row["client_active"];
             $row["gestion_membres"] = (bool)$row["gestion_membres"];
             $row["gestion_abonnement"] = (bool)$row["gestion_abonnement"];
             $row["gestion_collabo"] = (bool)$row["gestion_collabo"];
@@ -77,8 +71,8 @@ class ServicesModel extends Database
         $req = "SELECT * FROM table_services";
         $stmt= $this->getConnection()->prepare($req);
         $stmt->execute();
-        $dataService = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $dataService;
+        $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $services;
     }
 
     public function deleteDBService($idService) 
@@ -91,4 +85,33 @@ class ServicesModel extends Database
         $stmt->bindValue(":idService", $idService, PDO::PARAM_INT);
         $stmt->execute();
     }
+
+     
+    public function createServices($membre,$abonnement,$collabo,$compta,$prelev,$relance,$tourniquet,$badge,$qrcode,$video,$vente,$org) 
+    {
+        $req = "INSERT INTO table_services (gestion_membres,gestion_abonnement,gestion_collabo,gestion_compta,gestion_prelevement,relance_imp,acces_tourniquet,acces_badge,acces_qrcode,video_surv,vente_boisson,org_evenement)
+        VALUES (:membre,:abonnement,:collabo,:compta,:prelev,:relance,:tourniquet,:badge,:qrcode,:video,:vente,:org)
+        ";
+
+        $stmt = $this->getConnection()->prepare($req);
+
+        $stmt->bindValue(":membre",$membre,PDO::PARAM_BOOL);
+        $stmt->bindValue(":abonnement",$abonnement,PDO::PARAM_BOOL);
+        $stmt->bindValue(":collabo",$collabo,PDO::PARAM_BOOL);
+        $stmt->bindValue(":compta",$compta,PDO::PARAM_BOOL);
+        $stmt->bindValue(":prelev",$prelev,PDO::PARAM_BOOL);
+        $stmt->bindValue(":relance",$relance,PDO::PARAM_BOOL);
+        $stmt->bindValue(":toruniquet",$tourniquet,PDO::PARAM_BOOL);
+        $stmt->bindValue(":badge" ,$badge,PDO::PARAM_BOOL);
+        $stmt->bindValue(":qrcode",$qrcode,PDO::PARAM_BOOL);
+        $stmt->bindValue(":video",$video,PDO::PARAM_BOOL);
+        $stmt->bindValue(":vente",$vente,PDO::PARAM_BOOL);
+        $stmt->bindValue(":org",$org,PDO::PARAM_BOOL);
+
+        $stmt->execute();
+
+        return $this->getConnection()->lastInsertId();
+    }
+   
+
 }

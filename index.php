@@ -171,8 +171,8 @@ try {
                                         break;
                                     case "creation" : $servicesController->create();
                                         break;
-                                    // case "validateCreate" : $servicesController->validateCreation();
-                                    //     break;
+                                    case "validateCreate" : $servicesController->validateCreation();
+                                        break;
                                     // case "updateValidate" : $clientController->update();
                                     //     break;
                                     default:

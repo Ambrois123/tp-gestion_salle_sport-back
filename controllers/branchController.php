@@ -1,8 +1,8 @@
 <?php 
 
 require_once './models/branchModel.php';
-require_once './models/salleModel.php';
 require_once './config/BaseController.php';
+require_once './controllers/security.php';
 class branchController extends BaseController
 {
     private $branchModel;
@@ -61,13 +61,6 @@ class branchController extends BaseController
     {
         if (Security::verifyAccessSession()){
 
-            $salleModel = new SalleModel();
-            $salles = $salleModel->getDBSalle();
-            
-            // echo "<pre>";
-            // print_r($salles);
-            // echo "</pre>";
-
             require_once "./views/createBranch.php";
 
         } else {
@@ -83,7 +76,7 @@ class branchController extends BaseController
             $salle = (INT) Security::secureHTML($_POST['salleId']);
             
 
-            $this->branchModel->createBranch($name,$salle);
+            $this->branchModel->createBranch($name);
 
             $_SESSION['alert'] = [
                 'message' => "La branche a bien été crée.",

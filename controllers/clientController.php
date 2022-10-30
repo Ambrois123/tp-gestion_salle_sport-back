@@ -85,14 +85,12 @@ class clientController extends BaseController
             $phone = Security::secureHTML($_POST['client_tel']);
             $address = Security::secureHTML($_POST['client_address']);
             $is_active = Security::secureHTML($_POST['client_active']);
-            $description = Security::secureHTML($_POST['client_description']);
-            $presentation = Security::secureHTML($_POST['client_presentation']);
             $url = Security::secureHTML($_POST['client_url']);
             $logo = Security::secureHTML($_POST['client_logo']);
             $dpo = Security::secureHTML($_POST['client_dpo']);
             $tech = Security::secureHTML($_POST['client_tech']);
             $com = Security::secureHTML($_POST['client_com']);
-            $this->clientModel->updateClient($idClient, $name, $email,$phone,$address,$is_active,$description,$presentation,$url,$logo,$dpo,$tech,$com);
+            $this->clientModel->updateClient($idClient, $name, $email,$phone,$address,$is_active,$url,$logo,$dpo,$tech,$com);
 
 
             $_SESSION['alert'] = [
@@ -124,15 +122,13 @@ class clientController extends BaseController
             $phone = Security::secureHTML($_POST['client_tel']);
             $address = Security::secureHTML($_POST['client_address']);
             $is_active = Security::secureHTML($_POST['client_active']);
-            $description = Security::secureHTML($_POST['client_description']);
-            $presentation = Security::secureHTML($_POST['client_presentation']);
             $url = Security::secureHTML($_POST['client_url']);
             $logo = Security::secureHTML($_POST['client_logo']);
             $dpo = Security::secureHTML($_POST['client_dpo']);
             $tech = Security::secureHTML($_POST['client_tech']);
             $com = Security::secureHTML($_POST['client_com']);
 
-           $idClient = $this->clientModel->createClient($name, $email,$phone,$address,$is_active,$description,$presentation,$url,$logo,$dpo,$tech,$com);
+           $idClient = $this->clientModel->createClient($name, $email,$phone,$address,$is_active,$url,$logo,$dpo,$tech,$com);
 
            $_SESSION['alert'] = [
             'message' => "Le client a bien été crée avec l'ID :".$idClient,

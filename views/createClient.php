@@ -22,14 +22,6 @@
     <label class="form-check-label" for="exampleCheck1">Actif</label>
   </div>
   <div class="mb-3">
-    <label for="client_description" class="form-label">Description</label>
-    <textarea name="client_description" id="client_description" rows="10" class="form-control"></textarea>
-  </div>
-  <div class="mb-3">
-    <label for="client_presentation" class="form-label">Présentation</label>
-    <textarea name="client_presentation" id="client_presentation" rows="10" class="form-control"></textarea>
-  </div>
-  <div class="mb-3">
     <label for="client_url" class="form-label">Url</label>
     <input type="text" class="form-control" id="client_url" name="client_url">
   </div>

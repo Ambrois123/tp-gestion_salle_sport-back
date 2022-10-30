@@ -50,16 +50,15 @@ class ZoneModel extends Database
         $stmt->execute();
     }
 
-    public function createSalle($name,$salle) 
+    public function createSalle($name) 
     {
-        $req = "INSERT INTO table_zone (zone_name,salleId)
-        VALUES (:name,:salleId)
+        $req = "INSERT INTO table_zone (zone_name)
+        VALUES (:name)
         ";
 
         $stmt = $this->getConnection()->prepare($req);
 
         $stmt->bindValue(":name",$name,PDO::PARAM_STR);
-        $stmt->bindValue(":salleId",$salle,PDO::PARAM_INT);
 
         $stmt->execute();
 

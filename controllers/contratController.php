@@ -1,9 +1,8 @@
 <?php
 
 require_once './models/contratModel.php';
-require_once './models/clientModel.php';
-require_once './models/branchModel.php';
 require_once './config/BaseController.php';
+require_once './controllers/security.php';
 
 class contratController extends BaseController
 {
@@ -60,12 +59,6 @@ class contratController extends BaseController
     public function create()
     {
         if (Security::verifyAccessSession()) {
-
-            $clientModel = new ClientModel();
-            $clients = $clientModel->getDBClient();
-
-            $branchModel = new BranchModel();
-            $branches = $branchModel->getDBBranch();
 
             require_once "./views/createContrat.php";
         } else {

@@ -6,12 +6,11 @@ class SalleModel extends Database
 {
     public function getDBSalle() 
     {
-        $req = "SELECT *
-                FROM table_salle
+        $req = "SELECT * FROM table_salle
                 INNER JOIN table_client ON table_client.client_id = table_salle.clientId
-                -- INNER JOIN table_branch ON table_branch.salleId = table_salle.salle_id
-                -- INNER JOIN table_zone ON table_zone.salleId = table_salle.salle_id
-                INNER JOIN table_services ON table_services.salleId = table_salle.salle_id
+                INNER JOIN table_branch ON table_branch.branch_id = table_salle.branchId
+                INNER JOIN table_zone ON table_zone.zone_id = table_salle.zoneId
+                INNER JOIN table_services ON table_services.service_id = table_salle.serviceId
 
                 ";
         $stmt=$this->getConnection()->prepare($req);
@@ -21,8 +20,6 @@ class SalleModel extends Database
         while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
             //boolean display false or true not 1 or 0
-            $row['salle_active'] = (bool)$row['salle_active'];
-            $row["client_active"] = (bool)$row["client_active"];
             $row["gestion_membres"] = (bool)$row["gestion_membres"];
             $row["gestion_abonnement"] = (bool)$row["gestion_abonnement"];
             $row["gestion_collabo"] = (bool)$row["gestion_collabo"];
@@ -93,10 +90,10 @@ class SalleModel extends Database
         $stmt->execute();
     }
 
-    public function createSalle($name,$address,$is_active,$image,$client) 
+    public function createSalle($name,$address,$is_active,$image,$client,$branch,$contrat,$zone,$service) 
     {
-        $req = "INSERT INTO table_salle (salle_name,salle_address,salle_active,salle_image,clientId)
-        VALUES (:name,:address,:is_active,:image,:clientId)
+        $req = "INSERT INTO table_salle (salle_name,salle_address,salle_active,salle_image,clientId,branchId,contratId,zoneId,serviceId)
+        VALUES (:name,:address,:is_active,:image,:clientId,:branchId,:contratId,:zoneId,:serviceId)
         ";
 
         $stmt = $this->getConnection()->prepare($req);
@@ -106,6 +103,10 @@ class SalleModel extends Database
         $stmt->bindValue(":is_active",$is_active,PDO::PARAM_BOOL);
         $stmt->bindValue(":image",$image,PDO::PARAM_STR);
         $stmt->bindValue(":clientId",$client,PDO::PARAM_INT);
+        $stmt->bindValue(":branchId",$client,PDO::PARAM_INT);
+        $stmt->bindValue(":contratId",$client,PDO::PARAM_INT);
+        $stmt->bindValue(":zoneId",$client,PDO::PARAM_INT);
+        $stmt->bindValue(":serviceId",$client,PDO::PARAM_INT);
 
         $stmt->execute();
 

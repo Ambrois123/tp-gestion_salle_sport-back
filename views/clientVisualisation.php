@@ -9,8 +9,6 @@
       <th scope="col">Téléphone</th>
       <th scope="col">Adresse</th>
       <th scope="col">Actif</th>
-      <th scope="col">Description</th>
-      <th scope="col">Présentation</th>
       <th scope="col">Adresse web</th>
       <th scope="col">Logo</th>
       <th scope="col">DPO</th>
@@ -31,8 +29,6 @@
           <td><?= $client['client_tel'] ?></td>
           <td><?= $client['client_address'] ?></td>
           <td><?= $client['client_active'] ?></td>
-          <td><?= $client['client_description'] ?></td>
-          <td><?= $client['client_presentation'] ?></td>
           <td><?= $client['client_url'] ?></td>
           <td><?= $client['client_logo'] ?></td>
           <td><?= $client['client_dpo'] ?></td>

@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<for method="POST" action="<?= URL ?>admin/branche/validateCreate" class="container pb-3">
+<form method="POST" action="<?= URL ?>admin/services/validateCreate" class="container pb-3">
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="gestion_membres" name="gestion_membres">
   <label class="form-check-label" for="gestion_membres">
@@ -73,31 +73,9 @@
     Organisation évènement
   </label>
 </div>
-  <div class="mb-3">
-        <label for="salle_image" class="form-label">Clients:</label>
-        <select class="form-select" aria-label="Default select example" name="table_salle">
-        <option selected>Selectionnez le client</option>
-        <?php foreach ($clients as $client) : ?>
-            <option value="<?= $client['client_id'] ?>">
-            <?= $client['client_id'] ?> - <?= $client['client_name'] ?>
-            </option>
-        <?php endforeach; ?>
-        </select>
-</div>
-<div class="mb-3">
-        <label for="salle_image" class="form-label">Contrats:</label>
-        <select class="form-select" aria-label="Default select example" name="table_salle">
-        <option selected>Selectionnez un contrat</option>
-        <?php foreach ($contrats as $contrat) : ?>
-            <option value="<?= $contrat['contrat_id'] ?>">
-            <?= $contrat['contrat_id'] ?> - <?= $contrat['contrat_name'] ?>
-            </option>
-        <?php endforeach; ?>
-        </select>
-</div>
 
   <button type="submit" class="btn btn-primary">Valider</button>
-</for m>
+</form>
 
 <?php
 //Put the content in the variable content

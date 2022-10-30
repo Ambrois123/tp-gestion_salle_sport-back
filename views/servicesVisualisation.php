@@ -4,17 +4,16 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Gestion memb</th>
-      <th scope="col">Gestion abon</th>
-      <th scope="col">Gestion collabo</th>
-      <th scope="col">Gestion compta</th>
-      <th scope="col">Gestion prelev</th>
-      <th scope="col">Relance imp</th>
+      <th scope="col">Membre</th>
+      <th scope="col">Abonnement</th>
+      <th scope="col">Collaboraeur</th>
+      <th scope="col">Compta</th>
+      <th scope="col">Prélèvement</th>
+      <th scope="col">Impayé</th>
       <th scope="col">Access tourn</th>
       <th scope="col">Access badge</th>
       <th scope="col">Access qrcode</th>
       <th scope="col">Video Surv</th>
-      <th scope="col">Vente boisson</th>
       <th scope="col">Vente boisson</th>
       <th scope="col">Organisation Even</th>
       <th scope="col" colspan="2">Actions</th>
@@ -38,13 +37,13 @@
       <td><?= $service['vente_boisson'] ?></td>
       <td><?= $service['org_evenement'] ?></td>
       <td>
-        <form method="POST" action="">
-          <input type="hidden" name="service_id" value="<?= $service['service_id'] ?>">
-          <button class='btn btn-warning'>Modifier</button>
-        </form>
+          <form method="POST" action="">
+            <input type="hidden" name="service_id" value="<?= $service['service_id'] ?>">
+            <button class='btn btn-warning'>Modifier</button>
+          </form>
       </td>
       <td>
-      <form method="POST" action="<?= URL ?>admin/services/validateDelete" onsubmit="return confirm('Voulez-vous vraiment supprimer ce service ?')">
+            <form method="POST" action="<?= URL ?>admin/services/validateDelete" onsubmit="return confirm('Voulez-vous vraiment supprimer ce service ?')">
               <input type="hidden" name="service_id" value="<?= $service['service_id'] ?>">
               <button class='btn btn-danger' type="submit">Supprimer</button>
             </form>

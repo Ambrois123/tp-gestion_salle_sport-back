@@ -1,8 +1,8 @@
 <?php 
 
 require_once './models/zoneModel.php';
-require_once './models/salleModel.php';
 require_once './config/BaseController.php';
+require_once './controllers/security.php';
 class zoneController extends BaseController
 {
     private $zoneModel;
@@ -59,9 +59,6 @@ class zoneController extends BaseController
     {
         if (Security::verifyAccessSession()){
 
-            $salleModel = new SalleModel();
-            $salles = $salleModel->getDBSalle();
-
             require_once "./views/createZone.php";
 
         } else {
@@ -73,10 +70,9 @@ class zoneController extends BaseController
     {
         if (Security::verifyAccessSession()){
             $name = Security::secureHTML($_POST['zone_name']);
-            $salle = (INT) Security::secureHTML($_POST['salleId']);
             
 
-            $this->zoneModel->createSalle($name,$salle);
+            $this->zoneModel->createSalle($name,);
 
             $_SESSION['alert'] = [
                 'message' => "La zone a bien été crée.",

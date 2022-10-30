@@ -2,12 +2,14 @@
 
 require_once './models/salleModel.php';
 require_once './config/BaseController.php';
+require_once './controllers/security.php';
 
 //require for menu deroulant in createSalle
 require_once './models/clientModel.php';
 require_once './models/branchModel.php';
 require_once './models/zoneModel.php';
 require_once './models/contratModel.php';
+require_once './models/servicesModel.php';
 
 class salleController extends BaseController
 {
@@ -83,6 +85,9 @@ class salleController extends BaseController
 
             $contratModel = new ContratModel();
             $contrats = $contratModel->getDBContrat();
+
+            $servicesModel = new ServicesModel();
+            $services = $servicesModel->getDBServices();
             
             // echo "<pre>";
             // print_r($salles);
@@ -103,12 +108,16 @@ class salleController extends BaseController
             $is_active = Security::secureHTML($_POST['salle_active']);
             $image = "";
             $client = (INT) Security::secureHTML($_POST['clientId']);
+            $branch = (INT) Security::secureHTML($_POST['branchId']);
+            $contrat = (INT) Security::secureHTML($_POST['contratId']);
+            $zone = (INT) Security::secureHTML($_POST['zoneId']);
+            $service = (INT) Security::secureHTML($_POST['serviceId']);
             
 
-            $this->salleModel->createSalle($name,$address,$is_active,$image,$client);
+            $idSalle = $this->salleModel->createSalle($name,$address,$is_active,$image,$client,$branch,$contrat,$zone,$service);
 
             $_SESSION['alert'] = [
-                'message' => "Le client a bien été crée.",
+                'message' => "La salle a bien été crée avec l'ID : ".$idSalle,
                 'type' => "alert-success"
             ];
             
