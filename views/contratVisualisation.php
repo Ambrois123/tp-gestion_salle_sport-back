@@ -4,9 +4,8 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Formule essentielle</th>
-      <th scope="col">Formule premium</th>
-      <th scope="col">Formule business</th>
+      <th scope="col">Type de contrat</th>
+
       <th scope="col" colspan="2">Actions</th>
     </tr>
   </thead>
@@ -15,9 +14,7 @@
     <?php foreach($contrats as $contrat) : ?>
     <tr>
       <td><?= $contrat['contrat_id'] ?></td>
-      <td><?= $contrat['formule_esssentiel'] ?></td>
-      <td><?= $contrat['formule_premium'] ?></td>
-      <td><?= $contrat['formule_business'] ?></td>
+      <td><?= $contrat['contrat_name'] ?></td>
       <td>
         <form method="POST" action="">
           <input type="hidden" name="contrat_id" value="<?= $contrat['contrat_id'] ?><">

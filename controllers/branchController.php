@@ -1,6 +1,7 @@
 <?php 
 
 require_once './models/branchModel.php';
+require_once './models/salleModel.php';
 require_once './config/BaseController.php';
 class branchController extends BaseController
 {
@@ -48,6 +49,46 @@ class branchController extends BaseController
                     'message' => "La branche a bien été supprimée.",
                     'type' => "alert-success"
                 ];
+            
+            header("Location: ".URL.'admin/branche/visualisation');
+
+        } else {
+            throw new Exception("Vous n'avez pas accès à cette page");
+        }
+    }
+
+    public function create() 
+    {
+        if (Security::verifyAccessSession()){
+
+            $salleModel = new SalleModel();
+            $salles = $salleModel->getDBSalle();
+            
+            // echo "<pre>";
+            // print_r($salles);
+            // echo "</pre>";
+
+            require_once "./views/createBranch.php";
+
+        } else {
+            throw new Exception("Vous n'avez pas accès à cette page");
+        }
+    }
+
+    public function validateCreation() 
+    {
+        if (Security::verifyAccessSession()){
+
+            $name = Security::secureHTML($_POST['branch_name']);
+            $salle = (INT) Security::secureHTML($_POST['salleId']);
+            
+
+            $this->branchModel->createBranch($name,$salle);
+
+            $_SESSION['alert'] = [
+                'message' => "La branche a bien été crée.",
+                'type' => "alert-success"
+            ];
             
             header("Location: ".URL.'admin/branche/visualisation');
 

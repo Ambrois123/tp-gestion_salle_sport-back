@@ -1,6 +1,8 @@
 <?php 
 
 require_once './models/servicesModel.php';
+require_once './models/clientModel.php';
+require_once './models/contratModel.php';
 require_once './config/BaseController.php';
 
 class ServicesController extends BaseController
@@ -51,6 +53,23 @@ class ServicesController extends BaseController
                 ];
             
             header("Location: ".URL.'admin/services/visualisation');
+
+        } else {
+            throw new Exception("Vous n'avez pas accès à cette page");
+        }
+    }
+
+    public function create() 
+    {
+        if (Security::verifyAccessSession()){
+
+            $clientModel = new ClientModel();
+            $clients = $clientModel->getDBClient();
+
+            $contratModel = new ContratModel();
+            $contrats= $contratModel->getDBContrat();
+
+            require_once "./views/createServices.php";
 
         } else {
             throw new Exception("Vous n'avez pas accès à cette page");

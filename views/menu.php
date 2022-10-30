@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">BasicSport</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -34,20 +34,11 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Salle
+            Branche
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="<?= URL ?>admin/salles/visualisation">Visualisation</a></li>
-            <li><a class="dropdown-item" href="<?= URL ?>admin/salles/creation">Création</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Services
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="<?= URL ?>admin/services/visualisation">Visualisation</a></li>
-            <li><a class="dropdown-item" href="<?= URL ?>admin/services/creation">Création</a></li>
+            <li><a class="dropdown-item" href="<?= URL ?>admin/branche/visualisation">Visualisation</a></li>
+            <li><a class="dropdown-item" href="<?= URL ?>admin/branche/creation">Création</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -61,20 +52,29 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Branche
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="<?= URL ?>admin/branche/visualisation">Visualisation</a></li>
-            <li><a class="dropdown-item" href="<?= URL ?>admin/branche/creation">Création</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Zone
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="<?= URL ?>admin/zone/visualisation">Visualisation</a></li>
             <li><a class="dropdown-item" href="<?= URL ?>admin/zone/creation">Création</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Services
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="<?= URL ?>admin/services/visualisation">Visualisation</a></li>
+            <li><a class="dropdown-item" href="<?= URL ?>admin/services/creation">Création</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Salle
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="<?= URL ?>admin/salles/visualisation">Visualisation</a></li>
+            <li><a class="dropdown-item" href="<?= URL ?>admin/salles/creation">Création</a></li>
           </ul>
         </li>
         <li class="nav-item">

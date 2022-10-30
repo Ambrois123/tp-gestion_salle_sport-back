@@ -111,33 +111,19 @@ try {
                                 throw new Exception("Page Not Found");
                         } 
                         break;
-                        case "salles" : 
-                            switch($url[2]){
-                                case "visualisation" : $salleController->displaySalles();
-                                    break;
-                                case "validateDelete" : $salleController->delete();
-                                    break;
-                                // case "updateValidate" : $clientController->update();
-                                //     break;
-                                // case "creation" : $clientController->createTemplate();
-                                //     break;
-                                // case "validateCreate" : $clientController->create();
-                                //     break;
-                                default:
-                                    throw new Exception("Page Not Found");
-                            } 
-                            break;
-                            case "services" : 
+                            case "branche" : 
                                 switch($url[2]){
-                                    case "visualisation" : $servicesController->displayServices();
+                                    case "visualisation" : $branchController->displayBranch();
                                         break;
-                                    case "validateDelete" : $servicesController->delete();
+                                    case "validateDelete" : $branchController->delete();
+                                        break;
+                                    case "creation" : $branchController->create();
+                                        break;
+                                    case "validateCreate" : $branchController->validateCreation();
                                         break;
                                     // case "updateValidate" : $clientController->update();
                                     //     break;
                                     // case "creation" : $clientController->createTemplate();
-                                    //     break;
-                                    // case "validateCreate" : $clientController->create();
                                     //     break;
                                     default:
                                         throw new Exception("Page Not Found");
@@ -149,48 +135,67 @@ try {
                                             break;
                                         case "validateDelete" : $contratController->delete();
                                             break;
+                                        case "creation" : $contratController->create();
+                                            break;
+                                        case "validateCreate" : $contratController->validateCreation();
+                                            break;
                                         // case "updateValidate" : $clientController->update();
-                                        //     break;
-                                        // case "creation" : $clientController->createTemplate();
-                                        //     break;
-                                        // case "validateCreate" : $clientController->create();
                                         //     break;
                                         default:
                                             throw new Exception("Page Not Found");
                                     } 
                                     break;
-                                    case "branche" : 
+                                    case "zone" : 
                                         switch($url[2]){
-                                            case "visualisation" : $branchController->displayBranch();
+                                            case "visualisation" : $zoneController->displayZone();
                                                 break;
-                                            case "validateDelete" : $branchController->delete();
+                                            case "validateDelete" : $zoneController->delete();
+                                                break;
+                                            case "creation" : $zoneController->create();
+                                                break;
+                                            case "validateCreate" : $zoneController->validateCreation();
                                                 break;
                                             // case "updateValidate" : $clientController->update();
                                             //     break;
                                             // case "creation" : $clientController->createTemplate();
                                             //     break;
-                                            // case "validateCreate" : $clientController->create();
-                                            //     break;
                                             default:
                                                 throw new Exception("Page Not Found");
                                         } 
                                         break;
-                                        case "zone" : 
-                                            switch($url[2]){
-                                                case "visualisation" : $zoneController->displayZone();
-                                                    break;
-                                                case "validateDelete" : $zoneController->delete();
-                                                    break;
-                                                // case "updateValidate" : $clientController->update();
-                                                //     break;
-                                                // case "creation" : $clientController->createTemplate();
-                                                //     break;
-                                                // case "validateCreate" : $clientController->create();
-                                                //     break;
-                                                default:
-                                                    throw new Exception("Page Not Found");
-                                            } 
+                            case "services" : 
+                                switch($url[2]){
+                                    case "visualisation" : $servicesController->displayServices();
+                                        break;
+                                    case "validateDelete" : $servicesController->delete();
+                                        break;
+                                    case "creation" : $servicesController->create();
+                                        break;
+                                    // case "validateCreate" : $servicesController->validateCreation();
+                                    //     break;
+                                    // case "updateValidate" : $clientController->update();
+                                    //     break;
+                                    default:
+                                        throw new Exception("Page Not Found");
+                                } 
+                                break;
+                                case "salles" : 
+                                    switch($url[2]){
+                                        case "visualisation" : $salleController->displaySalles();
                                             break;
+                                        case "validateDelete" : $salleController->delete();
+                                            break;
+                                        case "creation" : $salleController->create();
+                                            break;
+                                        case "validateCreate" : $salleController->validateCreation();
+                                            break;
+                                        // case "updateValidate" : $clientController->update();
+                                        //     break;
+                                        
+                                        default:
+                                            throw new Exception("Page Not Found");
+                                    } 
+                                    break;
                 }
                 break;
             default:

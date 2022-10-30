@@ -3,6 +3,12 @@
 require_once './models/salleModel.php';
 require_once './config/BaseController.php';
 
+//require for menu deroulant in createSalle
+require_once './models/clientModel.php';
+require_once './models/branchModel.php';
+require_once './models/zoneModel.php';
+require_once './models/contratModel.php';
+
 class salleController extends BaseController
 {
     private $salleModel;
@@ -52,6 +58,59 @@ class salleController extends BaseController
                     'message' => "La salle a bien été supprimée.",
                     'type' => "alert-success"
                 ];
+            
+            header("Location: ".URL.'admin/salles/visualisation');
+
+        } else {
+            throw new Exception("Vous n'avez pas accès à cette page");
+        }
+    }
+
+    public function create()
+    {
+        if (Security::verifyAccessSession()){
+
+            //require for menu deroulant in createSalle
+
+            $clientModel = new ClientModel();
+            $clients = $clientModel->getDBClient();
+
+            $branchModel = new BranchModel();
+            $branches = $branchModel->getDBBranch();
+
+            $zoneModel = new ZoneModel();
+            $zones = $zoneModel->getDBZone();
+
+            $contratModel = new ContratModel();
+            $contrats = $contratModel->getDBContrat();
+            
+            // echo "<pre>";
+            // print_r($salles);
+            // echo "</pre>";
+
+            require_once "./views/createSalle.php";
+
+        } else {
+            throw new Exception("Vous n'avez pas accès à cette page");
+        }
+    }
+
+    public function validateCreation() 
+    {
+        if (Security::verifyAccessSession()){
+            $name = Security::secureHTML($_POST['salle_name']);
+            $address = Security::secureHTML($_POST['salle_address']);
+            $is_active = Security::secureHTML($_POST['salle_active']);
+            $image = "";
+            $client = (INT) Security::secureHTML($_POST['clientId']);
+            
+
+            $this->salleModel->createSalle($name,$address,$is_active,$image,$client);
+
+            $_SESSION['alert'] = [
+                'message' => "Le client a bien été crée.",
+                'type' => "alert-success"
+            ];
             
             header("Location: ".URL.'admin/salles/visualisation');
 

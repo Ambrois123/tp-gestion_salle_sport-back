@@ -46,4 +46,19 @@ class ContratModel extends Database
         $stmt->bindValue(":idContrat", $idContrat, PDO::PARAM_INT);
         $stmt->execute();
     }
+
+    public function createSalle($name) 
+    {
+        $req = "INSERT INTO table_contrat (contrat_name)
+        VALUES (:name)
+        ";
+
+        $stmt = $this->getConnection()->prepare($req);
+
+        $stmt->bindValue(":name",$name,PDO::PARAM_STR);
+
+        $stmt->execute();
+
+        return $this->getConnection()->lastInsertId();
+    }
 }

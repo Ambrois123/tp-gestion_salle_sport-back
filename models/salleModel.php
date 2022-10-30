@@ -12,7 +12,7 @@ class SalleModel extends Database
                 INNER JOIN table_branch ON table_branch.salleId = table_salle.salle_id
                 INNER JOIN table_zone ON table_zone.salleId = table_salle.salle_id
                 INNER JOIN table_services ON table_services.salleId = table_salle.salle_id
-                INNER JOIN table_contrat ON table_contrat.salleId = table_salle.salle_id
+
                 ";
         $stmt=$this->getConnection()->prepare($req);
         $stmt->execute();
@@ -93,5 +93,22 @@ class SalleModel extends Database
         $stmt->execute();
     }
 
-    
+    public function createSalle($name,$address,$is_active,$image,$client) 
+    {
+        $req = "INSERT INTO table_salle (salle_name,salle_address,salle_active,salle_image,clientId)
+        VALUES (:name,:address,:is_active,:image,:clientId)
+        ";
+
+        $stmt = $this->getConnection()->prepare($req);
+
+        $stmt->bindValue(":name",$name,PDO::PARAM_STR);
+        $stmt->bindValue(":address",$address,PDO::PARAM_STR);
+        $stmt->bindValue(":is_active",$is_active,PDO::PARAM_BOOL);
+        $stmt->bindValue(":image",$image,PDO::PARAM_STR);
+        $stmt->bindValue(":clientId",$client,PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        return $this->getConnection()->lastInsertId();
+    }
 }
