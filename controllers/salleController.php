@@ -127,4 +127,27 @@ class salleController extends BaseController
             throw new Exception("Vous n'avez pas accès à cette page");
         }
     }
+
+    public function update() 
+    {
+        if (Security::verifyAccessSession()){
+
+            $idSalle = (INT) Security::secureHTML($_POST['salle_id']);
+            $name = Security::secureHTML($_POST['salle_name']);
+            $address = Security::secureHTML($_POST['salle_address']);
+            $is_active= Security::secureHTML($_POST['salle_active']);
+
+            $this->salleModel->updateSalle($idSalle,$name,$address,$is_active);
+
+            $_SESSION['alert'] = [
+                'message' => "La salle a bien été mise à jour ",
+                'type' => "alert-success"
+            ];
+
+            header("Location: ".URL.'admin/salles/visualisation');
+
+        } else {
+            throw new Exception("Vous n'avez pas accès à cette page");
+        }
+    }
 }

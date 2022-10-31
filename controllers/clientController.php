@@ -1,4 +1,6 @@
 <?php 
+
+
 require_once './models/clientModel.php';
 require_once './config/BaseController.php';
 require_once './controllers/security.php';
@@ -17,9 +19,6 @@ class clientController extends BaseController
     {
         $clients = $this->clientModel->getDBClient();
         $this->sendJSON($clients);
-        // echo "<pre>";
-        // print_r($clients);
-        // echo "</pre>";
         
     }
 
@@ -29,7 +28,8 @@ class clientController extends BaseController
         $this->sendJson($singleClient);
     }
 
-    //another verification before modified table
+    //display in panel de gestion
+    
     public function display() 
     {
         if (Security::verifyAccessSession()){

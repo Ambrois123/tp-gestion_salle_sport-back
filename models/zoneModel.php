@@ -64,4 +64,17 @@ class ZoneModel extends Database
 
         return $this->getConnection()->lastInsertId();
     }
+
+    public function updateZone($idZone,$name) 
+    {
+        $req = "UPDATE table_zone
+        SET zone_name = :name
+        WHERE zone_id = :idZone
+        ";
+
+        $stmt = $this->getConnection()->prepare($req);
+        $stmt->bindValue(":idZone", $idZone, PDO::PARAM_INT);
+        $stmt->bindValue(":name",$name,PDO::PARAM_STR);
+        $stmt->execute();
+    }
 }

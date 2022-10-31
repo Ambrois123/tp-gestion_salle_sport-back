@@ -89,7 +89,8 @@ class ServicesModel extends Database
      
     public function createServices($membre,$abonnement,$collabo,$compta,$prelev,$relance,$tourniquet,$badge,$qrcode,$video,$vente,$org) 
     {
-        $req = "INSERT INTO table_services (gestion_membres,gestion_abonnement,gestion_collabo,gestion_compta,gestion_prelevement,relance_imp,acces_tourniquet,acces_badge,acces_qrcode,video_surv,vente_boisson,org_evenement)
+        $req = "INSERT INTO table_services (gestion_membres,gestion_abonnement,gestion_collabo,gestion_compta,gestion_prelevement,
+        relance_imp,acces_tourniquet,acces_badge,acces_qrcode,video_surv,vente_boisson,org_evenement)
         VALUES (:membre,:abonnement,:collabo,:compta,:prelev,:relance,:tourniquet,:badge,:qrcode,:video,:vente,:org)
         ";
 

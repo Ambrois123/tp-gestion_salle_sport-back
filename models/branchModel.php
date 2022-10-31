@@ -65,4 +65,17 @@ class BranchModel extends Database
         return $this->getConnection()->lastInsertId();
 
     }
+
+    public function updateBranch($idBranch,$name) 
+    {
+        $req = "UPDATE table_branch
+        SET branch_name = :name
+        WHERE branch_id = :idBranch
+        ";
+
+        $stmt = $this->getConnection()->prepare($req);
+        $stmt->bindValue(":idBranch", $idBranch, PDO::PARAM_INT);
+        $stmt->bindValue(":name",$name,PDO::PARAM_STR);
+        $stmt->execute();
+    }
 }

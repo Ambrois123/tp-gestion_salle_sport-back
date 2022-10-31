@@ -72,10 +72,10 @@ class contratController extends BaseController
             $name = Security::secureHTML($_POST['contrat_name']);
             
 
-            $this->contratModel->createSalle($name);
+            $idContrat = $this->contratModel->createSalle($name);
 
             $_SESSION['alert'] = [
-                'message' => "Le contrat a bien été crée.",
+                'message' => "Le contrat a bien été crée avec l'ID : ".$idContrat,
                 'type' => "alert-success"
             ];
             
@@ -85,4 +85,27 @@ class contratController extends BaseController
             throw new Exception("Vous n'avez pas accès à cette page");
         }
     }
+    
+    public function update() 
+    {
+        if (Security::verifyAccessSession()){
+
+            $idContrat = (INT) Security::secureHTML($_POST['contrat_id']);
+            $name = Security::secureHTML($_POST['contrat_name']);
+
+            $this->contratModel->updateContrat($idContrat,$name);
+
+            $_SESSION['alert'] = [
+                'message' => "Le contrat a bien été mis à jour ",
+                'type' => "alert-success"
+            ];
+
+            header("Location: ".URL.'admin/contrat/visualisation');
+
+        } else {
+            throw new Exception("Vous n'avez pas accès à cette page");
+        }
+    }
+
+    
 }

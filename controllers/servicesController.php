@@ -24,11 +24,14 @@ class ServicesController extends BaseController
         $this->sendJSON($dataSingleService);
     }
 
+    //display in panel de gestion
+
     public function displayServices() 
     {
         if (Security::verifyAccessSession()){
 
             $services = $this->servicesModel->getDBDisplayServices();
+            
             require_once './views/servicesVisualisation.php';
 
         } else {
@@ -81,7 +84,7 @@ class ServicesController extends BaseController
             $tourniquet = Security::secureHTML($_POST['acces_tourniquet']);
             $badge = Security::secureHTML($_POST['acces_badge']);
             $qrcode = Security::secureHTML($_POST['acces_qrcode']);
-            $video = Security::secureHTML($_POST['video_surv"']);
+            $video = Security::secureHTML($_POST['video_surv']);
             $vente = Security::secureHTML($_POST['vente_boisson']);
             $org = Security::secureHTML($_POST['org_evenement']);
 
@@ -94,6 +97,19 @@ class ServicesController extends BaseController
         
             header("Location: ".URL.'admin/services/visualisation');
 
+
+        } else {
+            throw new Exception("Vous n'avez pas accès à cette page");
+        }
+    }
+
+    public function update() 
+    {
+        if (Security::verifyAccessSession()){
+
+            echo "visualisation";
+
+            header("Location: ".URL.'admin/services/visualisation');
 
         } else {
             throw new Exception("Vous n'avez pas accès à cette page");

@@ -59,8 +59,6 @@
                   <td><input type="text" name="client_tel" value="<?= $client['client_tel'] ?>"></td>
                   <td><input type="text" name="client_address" value="<?= $client['client_address'] ?>"></td>
                   <td><input type="checkbox" name="client_active" value="<?= $client['client_active'] ?>"></td>
-                  <td><textarea name="client_description" rows="5"><?= $client['client_description'] ?></textarea></td>
-                  <td><textarea name="client_presentation" rows="5"><?= $client['client_presentation'] ?></textarea></td>
                   <td><input type="text" name="client_url" value="<?= $client['client_url'] ?>"></td>
                   <td><input type="file" name="client_logo" value="<?= $client['client_logo'] ?>"></td>
                   <td><input type="text" name="client_dpo" value="<?= $client['client_dpo'] ?>"></td>

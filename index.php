@@ -121,10 +121,8 @@ try {
                                         break;
                                     case "validateCreate" : $branchController->validateCreation();
                                         break;
-                                    // case "updateValidate" : $clientController->update();
-                                    //     break;
-                                    // case "creation" : $clientController->createTemplate();
-                                    //     break;
+                                    case "updateValidate" : $branchController->update();
+                                        break;
                                     default:
                                         throw new Exception("Page Not Found");
                                 } 
@@ -139,8 +137,8 @@ try {
                                             break;
                                         case "validateCreate" : $contratController->validateCreation();
                                             break;
-                                        // case "updateValidate" : $clientController->update();
-                                        //     break;
+                                        case "updateValidate" : $contratController->update();
+                                            break;
                                         default:
                                             throw new Exception("Page Not Found");
                                     } 
@@ -155,10 +153,8 @@ try {
                                                 break;
                                             case "validateCreate" : $zoneController->validateCreation();
                                                 break;
-                                            // case "updateValidate" : $clientController->update();
-                                            //     break;
-                                            // case "creation" : $clientController->createTemplate();
-                                            //     break;
+                                            case "updateValidate" : $zoneController->update();
+                                                break;
                                             default:
                                                 throw new Exception("Page Not Found");
                                         } 
@@ -173,8 +169,8 @@ try {
                                         break;
                                     case "validateCreate" : $servicesController->validateCreation();
                                         break;
-                                    // case "updateValidate" : $clientController->update();
-                                    //     break;
+                                    case "updateValidate" : $servicesController->update();
+                                        break;
                                     default:
                                         throw new Exception("Page Not Found");
                                 } 
@@ -189,9 +185,8 @@ try {
                                             break;
                                         case "validateCreate" : $salleController->validateCreation();
                                             break;
-                                        // case "updateValidate" : $clientController->update();
-                                        //     break;
-                                        
+                                        case "updateValidate" : $salleController->update();
+                                            break;
                                         default:
                                             throw new Exception("Page Not Found");
                                     } 

@@ -54,6 +54,7 @@ try{
                                     salle_name VARCHAR(200) NOT NULL,
                                     salle_address VARCHAR(200) NOT NULL,
                                     salle_active BOOLEAN NOT NULL DEFAULT FALSE,
+                                    salle_image VARCHAR(200) NOT NULL,
                                     clientId INT NOT NULL,
                                     serviceId INT nOT NULL,
                                     zoneId INT NOT NULL,

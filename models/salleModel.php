@@ -103,13 +103,28 @@ class SalleModel extends Database
         $stmt->bindValue(":is_active",$is_active,PDO::PARAM_BOOL);
         $stmt->bindValue(":image",$image,PDO::PARAM_STR);
         $stmt->bindValue(":clientId",$client,PDO::PARAM_INT);
-        $stmt->bindValue(":branchId",$client,PDO::PARAM_INT);
-        $stmt->bindValue(":contratId",$client,PDO::PARAM_INT);
-        $stmt->bindValue(":zoneId",$client,PDO::PARAM_INT);
-        $stmt->bindValue(":serviceId",$client,PDO::PARAM_INT);
+        $stmt->bindValue(":branchId",$branch,PDO::PARAM_INT);
+        $stmt->bindValue(":contratId",$contrat,PDO::PARAM_INT);
+        $stmt->bindValue(":zoneId",$zone,PDO::PARAM_INT);
+        $stmt->bindValue(":serviceId",$service,PDO::PARAM_INT);
 
         $stmt->execute();
 
         return $this->getConnection()->lastInsertId();
+    }
+
+    public function updateSalle($idSalle,$name,$address,$is_active) 
+    {
+        $req = "UPDATE table_salle
+        SET salle_name = :name, salle_address = :address, salle_active = :is_active
+        WHERE salle_id = :idSalle
+        ";
+
+        $stmt = $this->getConnection()->prepare($req);
+        $stmt->bindValue(":idSalle", $idSalle, PDO::PARAM_INT);
+        $stmt->bindValue(":name",$name,PDO::PARAM_STR);
+        $stmt->bindValue(":address",$address,PDO::PARAM_STR);
+        $stmt->bindValue(":is_active",$is_active,PDO::PARAM_BOOL);
+        $stmt->execute();
     }
 }

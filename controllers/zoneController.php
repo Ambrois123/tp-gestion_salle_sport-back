@@ -72,13 +72,35 @@ class zoneController extends BaseController
             $name = Security::secureHTML($_POST['zone_name']);
             
 
-            $this->zoneModel->createSalle($name,);
+            $idZone = $this->zoneModel->createSalle($name,);
 
             $_SESSION['alert'] = [
-                'message' => "La zone a bien été crée.",
+                'message' => "La zone a bien été crée avec l'ID : ".$idZone,
                 'type' => "alert-success"
             ];
             
+            header("Location: ".URL.'admin/zone/visualisation');
+
+        } else {
+            throw new Exception("Vous n'avez pas accès à cette page");
+        }
+    }
+
+
+    public function update() 
+    {
+        if (Security::verifyAccessSession()){
+
+            $idZone = (INT) Security::secureHTML($_POST['zone_id']);
+            $name = Security::secureHTML($_POST['zone_name']);
+
+            $this->zoneModel->updateZone($idZone,$name);
+
+            $_SESSION['alert'] = [
+                'message' => "La zone a bien été mise à jour ",
+                'type' => "alert-success"
+            ];
+
             header("Location: ".URL.'admin/zone/visualisation');
 
         } else {

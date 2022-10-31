@@ -61,4 +61,17 @@ class ContratModel extends Database
 
         return $this->getConnection()->lastInsertId();
     }
+
+    public function updateContrat($idContrat,$name) 
+    {
+        $req = "UPDATE table_contrat
+        SET contrat_name = :name
+        WHERE contrat_id = :idContrat
+        ";
+
+        $stmt = $this->getConnection()->prepare($req);
+        $stmt->bindValue(":idContrat", $idContrat, PDO::PARAM_INT);
+        $stmt->bindValue(":name",$name,PDO::PARAM_STR);
+        $stmt->execute();
+    }
 }

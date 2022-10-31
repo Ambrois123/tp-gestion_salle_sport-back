@@ -76,13 +76,33 @@ class branchController extends BaseController
             $salle = (INT) Security::secureHTML($_POST['salleId']);
             
 
-            $this->branchModel->createBranch($name);
+            $idBranch = $this->branchModel->createBranch($name);
 
             $_SESSION['alert'] = [
-                'message' => "La branche a bien été crée.",
+                'message' => "La branche a bien été crée avecl'ID : ".$idBranch,
                 'type' => "alert-success"
             ];
             
+            header("Location: ".URL.'admin/branche/visualisation');
+
+        } else {
+            throw new Exception("Vous n'avez pas accès à cette page");
+        }
+    }
+
+    public function update() 
+    {
+        if (Security::verifyAccessSession()){
+            $idBranch = (INT) Security::secureHTML($_POST['branch_id']);
+            $name = Security::secureHTML($_POST['branch_name']);
+
+            $this->branchModel->updateBranch($idBranch,$name);
+
+            $_SESSION['alert'] = [
+                'message' => "La branche a bien été mise à jour ",
+                'type' => "alert-success"
+            ];
+
             header("Location: ".URL.'admin/branche/visualisation');
 
         } else {
