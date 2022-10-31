@@ -3,6 +3,7 @@
 require_once './models/salleModel.php';
 require_once './config/BaseController.php';
 require_once './controllers/security.php';
+require_once './utils/utils.php';
 
 //require for menu deroulant in createSalle
 require_once './models/clientModel.php';
@@ -107,6 +108,12 @@ class salleController extends BaseController
             $address = Security::secureHTML($_POST['salle_address']);
             $is_active = Security::secureHTML($_POST['salle_active']);
             $image = "";
+            if($_FILES['salle_image']['size'] > 0){
+                $repertoire = "public/images/";
+                $image = addImage($_FILES['salle_image'],$repertoire);
+
+            }
+            
             $client = (INT) Security::secureHTML($_POST['clientId']);
             $branch = (INT) Security::secureHTML($_POST['branchId']);
             $contrat = (INT) Security::secureHTML($_POST['contratId']);

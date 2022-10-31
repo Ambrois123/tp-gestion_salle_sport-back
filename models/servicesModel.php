@@ -89,7 +89,8 @@ class ServicesModel extends Database
      
     public function createServices($membre,$abonnement,$collabo,$compta,$prelev,$relance,$tourniquet,$badge,$qrcode,$video,$vente,$org) 
     {
-        $req = "INSERT INTO table_services (gestion_membres,gestion_abonnement,gestion_collabo,gestion_compta,gestion_prelevement,
+        $req = "INSERT INTO table_services (gestion_membres,
+        gestion_abonnement,gestion_collabo,gestion_compta,gestion_prelevement,
         relance_imp,acces_tourniquet,acces_badge,acces_qrcode,video_surv,vente_boisson,org_evenement)
         VALUES (:membre,:abonnement,:collabo,:compta,:prelev,:relance,:tourniquet,:badge,:qrcode,:video,:vente,:org)
         ";
@@ -113,6 +114,38 @@ class ServicesModel extends Database
 
         return $this->getConnection()->lastInsertId();
     }
+
+    public function updateService($idService,$membre,$abonnement,$collabo,$compta,$prelev,$relance,$tourniquet,$badge,$qrcode,$video,$vente,$org) 
+    {
+        $req = "UPDATE table_services 
+        SET gestion_membres= :membre, gestion_abonnement = :abonnement,
+        gestion_collabo = :collabo, gestion_compta = :compta,
+        gestion_prelevement = :prelev, relance_imp = :relance,
+        acces_tourniquet = :tourniquet, acces_badge = :badge,
+        acces_qrcode = :qrcode, video_surv = :video,
+        vente_boisson = :vente, org_evenement = :org
+        WHERE service_id = :idService
+        ";
+
+        $stmt = $this->getConnection()->prepare($req);
+
+        $stmt->bindValue(":idService", $idService, PDO::PARAM_INT);
+        $stmt->bindValue(":membre",$membre,PDO::PARAM_BOOL);
+        $stmt->bindValue(":abonnement",$abonnement,PDO::PARAM_BOOL);
+        $stmt->bindValue(":collabo",$collabo,PDO::PARAM_BOOL);
+        $stmt->bindValue(":compta",$compta,PDO::PARAM_BOOL);
+        $stmt->bindValue(":prelev",$prelev,PDO::PARAM_BOOL);
+        $stmt->bindValue(":relance",$relance,PDO::PARAM_BOOL);
+        $stmt->bindValue(":toruniquet",$tourniquet,PDO::PARAM_BOOL);
+        $stmt->bindValue(":badge" ,$badge,PDO::PARAM_BOOL);
+        $stmt->bindValue(":qrcode",$qrcode,PDO::PARAM_BOOL);
+        $stmt->bindValue(":video",$video,PDO::PARAM_BOOL);
+        $stmt->bindValue(":vente",$vente,PDO::PARAM_BOOL);
+        $stmt->bindValue(":org",$org,PDO::PARAM_BOOL);
+
+        $stmt->execute();
+    }
+
    
 
 }
