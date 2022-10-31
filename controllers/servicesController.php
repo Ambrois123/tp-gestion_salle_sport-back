@@ -76,20 +76,10 @@ class ServicesController extends BaseController
     {
         if (Security::verifyAccessSession()){
 
-            $membre = Security::secureHTML($_POST['gestion_membres']);
-            $abonnement = Security::secureHTML($_POST['gestion_abonnement']);
-            $collabo = Security::secureHTML($_POST['gestion_collabo']);
-            $compta = Security::secureHTML($_POST['gestion_compta']);
-            $prelev = Security::secureHTML($_POST['gestion_prelevement']);
-            $relance = Security::secureHTML($_POST['relance_imp']);
-            $tourniquet = Security::secureHTML($_POST['acces_tourniquet']);
-            $badge = Security::secureHTML($_POST['acces_badge']);
-            $qrcode = Security::secureHTML($_POST['acces_qrcode']);
-            $video = Security::secureHTML($_POST['video_surv']);
-            $vente = Security::secureHTML($_POST['vente_boisson']);
-            $org = Security::secureHTML($_POST['org_evenement']);
+            $name= Security::secureHTML($_POST['service_name']);
+        
 
-            $idServices = $this->servicesModel->createServices($membre,$abonnement,$collabo,$compta,$prelev,$relance,$tourniquet,$badge,$qrcode,$video,$vente,$org);
+            $idServices = $this->servicesModel->createServices($name);
 
             $_SESSION['alert'] = [
                 'message' => "Le service a bien été crée avec l'ID :".$idServices,
@@ -109,20 +99,10 @@ class ServicesController extends BaseController
         if (Security::verifyAccessSession()){
 
            $idService = (INT) Security::secureHTML($_POST['service_id']);
-           $membre = Security::secureHTML($_POST['gestion_membres']);
-            $abonnement = Security::secureHTML($_POST['gestion_abonnement']);
-            $collabo = Security::secureHTML($_POST['gestion_collabo']);
-            $compta = Security::secureHTML($_POST['gestion_compta']);
-            $prelev = Security::secureHTML($_POST['gestion_prelevement']);
-            $relance = Security::secureHTML($_POST['relance_imp']);
-            $tourniquet = Security::secureHTML($_POST['acces_tourniquet']);
-            $badge = Security::secureHTML($_POST['acces_badge']);
-            $qrcode = Security::secureHTML($_POST['acces_qrcode']);
-            $video = Security::secureHTML($_POST['video_surv']);
-            $vente = Security::secureHTML($_POST['vente_boisson']);
-            $org = Security::secureHTML($_POST['org_evenement']);
+           $name = Security::secureHTML($_POST['service_name']);
+            
 
-            $this->servicesModel->updateService($idService,$membre,$abonnement,$collabo,$compta,$prelev,$relance,$tourniquet,$badge,$qrcode,$video,$vente,$org);
+            $this->servicesModel->updateService($idService,$name);
 
             $_SESSION['alert'] = [
                 'message' => "Le service a bien été crée mis à jour :",

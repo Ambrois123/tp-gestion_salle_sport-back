@@ -80,6 +80,9 @@ try {
                         if (empty($url[2])) throw new Exception("ID Contrat Not Found");
                         $contratController->getSingleContrat($url[2]);
                         break;
+                        //response to validation form
+                    case "SendMessage" : $adminController->sendMessage();
+                        break;
                     default:
                         throw new Exception("Page Not Found");
                 }

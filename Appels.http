@@ -68,3 +68,9 @@ GET http://localhost/serveur_ecf_studi/front/single_contrat/3
 
 // table_contrat ends
 
+###
+GET http://localhost/serveur_ecf_studi/front/services
+
+###
+POST http://localhost/serveur_ecf_studi/front/SendMessage
+
